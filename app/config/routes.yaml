@@ -1,3 +1,11 @@
 hello_index:
   path: /hello
   controller: App\Controller\HelloController::index
+
+home_index:
+  path: /home
+  controller: App\Controller\HomeController::home_index
+
+contact_index:
+  path: /contact
+  controller: App\Controller\ContactController::contact_index

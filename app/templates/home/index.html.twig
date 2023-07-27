@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Home'|trans }}
+{% endblock %}
+    {% block stylesheets %}
+        <link
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+                rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+                crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    {% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="https://wierzba.wzks.uj.edu.pl/~21_goldys/todo-app/home">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Katalog
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://wierzba.wzks.uj.edu.pl/~21_goldys/todo-app/book">Książki</a></li>
+                            <li><a class="dropdown-item" href="https://wierzba.wzks.uj.edu.pl/~21_goldys/todo-app/author">Autorzy</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Kontakt</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Kontakt</a>
+                    </li>
+                    </li>
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+    <div class="row align-items-end">
+        <h1>{{ 'Strona główna (robocza)'|trans }}</h1>
+        <div class="col">
+            <p>Główna strona, tutaj zamieszczę ogólne informacje na temat wypożyczalni i jej funkcjonowania.</p>
+            <p>
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque ipsum vehicula, tristique
+                velit in, placerat justo. Fusce id facilisis neque. Morbi et felis accumsan, condimentum nisl non,
+                fringilla leo. Aliquam ornare imperdiet auctor. Integer vestibulum, augue elementum vehicula rhoncus,
+                tellus augue mollis odio, sit amet pharetra felis lacus a libero. Pellentesque at purus aliquet, euismod
+                diam eu, placerat felis. Praesent sodales rutrum arcu, tristique aliquam nibh. Nulla sit amet sem in dui
+                molestie sagittis. Nulla tristique leo nec tortor facilisis malesuada. Donec rhoncus dolor sit amet
+                augue laoreet euismod. Suspendisse potenti. Nunc euismod vestibulum neque, ac viverra eros laoreet sit
+                amet. In turpis risus, luctus et elit non, ornare consectetur lacus. Donec rutrum lorem in commodo
+                scelerisque.
+
+                Integer pretium urna nec metus dapibus suscipit. Phasellus et maximus lacus. Donec hendrerit, turpis sit
+                amet efficitur tempor, felis ante malesuada magna, tincidunt rhoncus ex libero in dui. Quisque
+                ullamcorper est in est dictum elementum. Sed vel augue ut enim faucibus varius quis et sapien. Curabitur
+                euismod luctus velit, sed sollicitudin purus imperdiet sit amet. Curabitur nec eleifend eros. Integer
+                malesuada mi non purus tempor tincidunt. Duis sed vehicula dui, in accumsan tellus. Quisque eget turpis
+                auctor augue elementum tristique. Vestibulum hendrerit, turpis sit amet vestibulum mattis, diam lectus
+                lacinia leo, at porttitor orci leo quis lectus. Pellentesque euismod nisl eu facilisis sollicitudin.
+                Etiam aliquet orci a lorem hendrerit accumsan. Duis a neque orci.
+
+                Ut at turpis consectetur, gravida neque id, congue felis. Pellentesque fermentum augue volutpat ante
+                mollis, at scelerisque felis accumsan. Nulla ut dui vitae ligula laoreet iaculis aliquet vitae erat.
+                Maecenas commodo mi ut justo pulvinar, ut aliquam tortor fringilla. Pellentesque arcu neque, sodales ut
+                ultrices a, condimentum nec mi. Proin dolor quam, iaculis vitae condimentum in, posuere vel libero.
+                Integer tincidunt nibh enim, vel porta orci tristique ac. Mauris in pulvinar ante, et imperdiet lectus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius sit amet risus nec viverra. Morbi
+                consectetur commodo eros non efficitur. Aliquam fermentum id est ac volutpat. Nunc et tincidunt tortor.
+                Nullam lobortis arcu sit amet consectetur dignissim.
+
+            </p>
+            <iframe src="https://giphy.com/embed/5kq0GCjHA8Rwc" width="480" height="360" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
+            <p><a href="https://giphy.com/gifs/throwback-rick-roll-astley-5kq0GCjHA8Rwc">via GIPHY</a></p>
+        </div>
+    </div>
+{% endblock %}

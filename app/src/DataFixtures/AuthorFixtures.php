@@ -1,20 +1,20 @@
 <?php
 /**
- * Task fixtures.
+ * Author fixtures.
  */
 
 namespace App\DataFixtures;
 
-use App\Entity\Book;
+use App\Entity\Author;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
 /**
- * Class TaskFixtures.
+ * Class AuthorFixtures.
  */
-class BookFixtures extends Fixture
+class AuthorFixtures extends Fixture
 {
     /**
      * Faker.
@@ -40,11 +40,10 @@ class BookFixtures extends Fixture
         $this->faker = Factory::create();
 
         for ($i = 0; $i < 10; ++$i) {
-            $book = new Book();
-            $book->setTitle($this->faker->sentence);
-            $book->setAuthor($this->faker->sentence);
-            $book->setPublisher($this->faker->sentence);
-            $manager->persist($book);
+            $author = new Author();
+            $author->setName($this->faker->sentence);
+            $author->setSurname($this->faker->sentence);
+            $manager->persist($author);
         }
 
         $manager->flush();
