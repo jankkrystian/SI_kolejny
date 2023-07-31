@@ -1,6 +1,6 @@
 <?php
 /**
- * Task controller.
+ * Book controller.
  */
 
 namespace App\Controller;
@@ -14,7 +14,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class TaskController.
+ * Class BookController.
  */
 #[Route('/book')]
 class BookController extends AbstractController
@@ -35,7 +35,7 @@ class BookController extends AbstractController
      * Index action.
      *
      * @param Request            $request        HTTP Request
-     * @param BookRepository     $bookRepository Task repository
+     * @param BookRepository     $bookRepository Book repository
      * @param PaginatorInterface $paginator      Paginator
      *
      * @return Response HTTP response
@@ -52,6 +52,13 @@ class BookController extends AbstractController
         return $this->render('book/index.html.twig', ['pagination' => $pagination]);
     }
 
+    /**
+     * Show action.
+     *
+     * @param Book $book Book entity
+     *
+     * @return Response HTTP response
+     */
     /**
      * Show action.
      *

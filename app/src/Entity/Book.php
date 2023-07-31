@@ -20,8 +20,24 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $publisher = null;
+
+    /**
+     * Genre.
+     *
+     * @var Genre
+     */
+    #[ORM\ManyToOne(targetEntity: Genre::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Genre $genre = null;
+
+    /**
+     * Publisher.
+     *
+     * @var Publisher
+     */
+    #[ORM\ManyToOne(targetEntity: Publisher::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Publisher $publisher = null;
 
     public function getId(): ?int
     {
@@ -50,15 +66,27 @@ class Book
 
     }
 
-    public function getPublisher(): ?string
+
+    public function getGenre(): ?Genre
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?Genre $genre): void
+    {
+        $this->genre = $genre;
+
+    }
+
+    public function getPublisher(): ?Publisher
     {
         return $this->publisher;
     }
 
-    public function setPublisher(string $publisher): void
+    public function setPublisher(?Publisher $publisher): static
     {
         $this->publisher = $publisher;
 
-
+        return $this;
     }
 }

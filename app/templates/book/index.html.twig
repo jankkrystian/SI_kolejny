@@ -1,61 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'Books'|trans }}
+    {{ 'Spis książek'|trans }}
 {% endblock %}
-{% block stylesheets %}
-    {% include 'navbar.html.twig' %}
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  {% block stylesheets %}
+      {% include 'navbar.html.twig' %}
+      <link
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+              crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  {% endblock %}
 
-{% endblock %}
 {% block body %}
-
-
-    <h4>{{ 'tutaj będzie można przeglądać wszystkie książki'|trans }}</h4>
-    <br/>
-    <br/>
-    <br/>
+    <h1>{{ 'spis książek'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
-        <div class="container text-center">
-
-        <div class="row">
-
-        <div class="col-sm-3">
-
-            <h2>Kategorie</h2>
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Fantastyka</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Przygodowe</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-success">Obyczajowe</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Literatura polska</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Literatura zagraniczna</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-info">Komiksy</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">Kryminały i thrillery</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Reportaże</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Biografie</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Inne</a>
-
-            </div>
-        </div>
-        <div class="col-sm-9">
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        <div class="row">
 
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'Id'|trans, 'book.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Title'|trans, 'book.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Author'|trans, 'book.author') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Publisher'|trans, 'book.publisher') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'book.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'book.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.author'|trans, 'book.author') }}</th>
+                <th>{{ 'label.genre'|trans }}</th>
+                <th>{{ 'label.publisher'|trans }}</th>
+
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -65,7 +39,8 @@
                     <td>{{ book.id }}</td>
                     <td>{{ book.title }}</td>
                     <td>{{ book.author }}</td>
-                    <td>{{ book.publisher }}</td>
+                    <td>{{ book.genre.title }}</td>
+                    <td>{{ book.publisher.title }}</td>
                     <td>
                         <a href="{{ url('book_show', {id: book.id}) }}" title="{{ 'action.show'|trans }}">
                             {{ 'action.show'|trans }}
