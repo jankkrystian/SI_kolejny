@@ -7,11 +7,11 @@ namespace App\DataFixtures;
 
 use App\Entity\Genre;
 use App\Entity\Publisher;
+use App\Entity\Creator;
 use App\Entity\Enum\BookStatus;
 use App\Entity\Tag;
 use App\Entity\Book;
 use App\Entity\User;
-use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -35,7 +35,6 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         $this->createMany(100, 'books', function (int $i) {
             $book = new Book();
             $book->setTitle($this->faker->sentence);
-            $book->setAuthor($this->faker->sentence);
 
             /** @var Genre $genre */
             $genre = $this->getRandomReference('genres');
@@ -44,6 +43,10 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             /** @var Publisher $publisher */
             $publisher = $this->getRandomReference('publishers');
             $book->setPublisher($publisher);
+
+            /** @var Creator $creator */
+            $creator = $this->getRandomReference('creators');
+            $book->setCreator($creator);
 
             return $book;
         });
@@ -57,11 +60,11 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
      *
      * @return string[] of dependencies
      *
-     * @psalm-return array{0: GenreFixtures::class, 1: PublisherFixtures::class}
+     * @psalm-return array{0: GenreFixtures::class, 1: PublisherFixtures::class, 2:CreatorFixtures::class}
      */
     public function getDependencies(): array
     {
-        return [GenreFixtures::class, PublisherFixtures::class];
+        return [GenreFixtures::class, PublisherFixtures::class, CreatorFixtures::class];
     }
 
 }

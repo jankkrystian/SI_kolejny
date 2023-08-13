@@ -17,8 +17,6 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $author = null;
 
 
     /**
@@ -39,6 +37,10 @@ class Book
     #[ORM\JoinColumn(nullable: false)]
     private ?Publisher $publisher = null;
 
+    #[ORM\ManyToOne(targetEntity: Creator::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Creator $creator = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,17 +54,6 @@ class Book
     public function setTitle(string $title): void
     {
         $this->title = $title;
-
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): void
-    {
-        $this->author = $author;
 
     }
 
@@ -86,6 +77,18 @@ class Book
     public function setPublisher(?Publisher $publisher): static
     {
         $this->publisher = $publisher;
+
+        return $this;
+    }
+
+    public function getCreator(): ?Creator
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(?Creator $creator): static
+    {
+        $this->creator = $creator;
 
         return $this;
     }
